@@ -96,12 +96,20 @@ end
 
 tulostaa myös jokaisen toiston numeron (alkaen 0:sta)
 
-Yleensä luuppeja ei käytetä, vaan käytetään näitä blokkeja.
+Yleensä luuppeja ei käytetä, vaan käytetään näitä blokkeja. (for, while ja do ovat kuitenkin käytettävissä, mutta niitä käytetään hyvin harvoin)
 
 [1,2,3,4].each do |i|
 	puts i
 end
 
-tulostaa taulukon sisällön
+tulostaa taulukon sisällön. Voi käyttää myös hash-taulukkoon. (each do |k,v|)
+
+[1,2,3,4].map do |i|
+	i * 2
+end
+
+palauttaa uuden taulukon, jossa alkuperäisen jokainen numero on kerrotuna kahdella
+
+
 
 

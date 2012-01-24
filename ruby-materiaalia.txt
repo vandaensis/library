@@ -82,7 +82,7 @@ AND on &&, OR on ||, NOT on ! (myös !=), if not --> unless
 
 puts "It is not two" unless a == 2
 
-Blokki voi sisältää koodia:
+Blokki voi olla do -- end tai { -- } ja sisältää koodia:
 
 3.times do
 	puts "Hello"
@@ -111,5 +111,9 @@ end
 palauttaa uuden taulukon, jossa alkuperäisen jokainen numero on kerrotuna kahdella
 
 
+File.open("/Users/train/.bash_profile") do |f|
+	f.each_line { |line| puts line }
+end
 
+tulostaa tiedoston jokaisen rivin. Tiedostoa ei tarvitse erikseen sulkea.
 
