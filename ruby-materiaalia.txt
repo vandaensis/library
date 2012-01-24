@@ -1,0 +1,57 @@
+Ruby-oppimateriaalia
+
+http://rubykoans.com
+http://tiny.cc/poignantguide
+
+http://ruby-doc.org
+
+Lataa github.com/Eficode/rails-basic ---> tags ja tallenna zip-paketti (ja pura se komennolla unzip)
+
+ja hakemistossa "bundle install" -komento, joka hakee
+
+aja "rake db:migrate"
+aja "rails console" (quit lopettaa sen)
+
+
+merkkijono: "abc" tai 'abc'
+"abc".size() (sulkuja ei tarvita, jos sisällä ei ole mitään)
+
+variable = "abc"
+"variable is: #{variable}"
+
+
+library(-ohjelman) lib-kansioon tehtiin uusi luokkatiedosto isbn_validator.rb
+
+muutetaan config-kansion tiedostoa application.rb poistamalla kommentointi riviltä
+
+config.autoload_paths += %W(#{config.root}/lib)
+
+ja muuttamalla sen lopussa (extras?) tilalle kansion nimeksi "lib" kuten yllä.
+
+tehdään uuteen luokkaan initialize-metodi, joka tulostaa sanan initializing.
+konsolissa reload! lataa uudelleen kaikki kirjastot
+
+IsbnValidator.new luo uuden instanssin, jonka yhteydessä tulostuu "initializing".
+
+puts "Initializing #{isbn}"
+Tehdään initialize-metodiin parametri isbn, joka tulostetaan alustuksen yhteydessä. Uuden olion luonti: IsbnValidator.new("1234")
+
+@muuttuja on luokan yksityinen muuttuja kaikkien luokan metodien käytössä (pelkkä isbn oli parametri vain yhdessä metodissa)
+
+	def isbn
+		return @isbn
+	end
+
+	def isbn=(isbn)
+		@isbn = isbn
+	end
+
+Nämä set- ja get-metodit voi korvata automaattisesti rivillä:
+
+attr_accessor :isbn
+
+tai vain toinen
+attr_reader :isbn
+attr_writer :isbn 
+
+
