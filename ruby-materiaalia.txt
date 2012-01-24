@@ -55,3 +55,61 @@ attr_reader :isbn
 attr_writer :isbn 
 
 
+symbol alkaa kaksoispisteellä :
+:isbn
+
+muistuttaa merkkijonoa (String-luokan erikoistapaus)
+
+taulukossa voi olla erityyppisiä tietoja [1, "abd" ,4.0]
+
+taulukon loppuun lisääminen: a << :new_item
+
+taulukoiden yhdistäminen [1,2] + [3,4] = [1,2,3,4]
+
+hash luodaan näin (avain ja arvo voivat olla mitä tahansa tyyppiä) {"abc" => 3, "def" => 4}
+
+uusi tapa hash-käsittelyyn kirjaimilla versiosta 1.9. alkaen on kaksoispiste
+{abc: 3, deff: 4}
+(def on varattu sana)
+
+
+if voi olla myös true-tapauksen suorituslauseen lopussa:
+puts "yes" if a == 1
+
+if -- elseif -- else
+
+AND on &&, OR on ||, NOT on ! (myös !=), if not --> unless
+
+puts "It is not two" unless a == 2
+
+Blokki voi sisältää koodia:
+
+3.times do
+	puts "Hello"
+end
+
+tulostaa kolme riviä Helloa.
+
+3.times do |number|
+	puts "Hello #{number}"
+end
+
+tulostaa myös jokaisen toiston numeron (alkaen 0:sta)
+
+Yleensä luuppeja ei käytetä, vaan käytetään näitä blokkeja. (for, while ja do ovat kuitenkin käytettävissä, mutta niitä käytetään hyvin harvoin)
+
+[1,2,3,4].each do |i|
+	puts i
+end
+
+tulostaa taulukon sisällön. Voi käyttää myös hash-taulukkoon. (each do |k,v|)
+
+[1,2,3,4].map do |i|
+	i * 2
+end
+
+palauttaa uuden taulukon, jossa alkuperäisen jokainen numero on kerrotuna kahdella
+
+
+
+
