@@ -210,3 +210,20 @@ test "a string with letters other than x is not valid" do
     assert !IsbnValidator.new.valid?("951-98548-9-p")
   end
 
+
+Testitiedostoon voi luoda instanssimuuttujan, jolloin kaikissa testeissä voi käyttää sitä:
+
+	setup do
+		@book = books(:steppenwolf)
+	end
+
+setup-blokissa voi luoda kaikki tarvittavat muuttujat joita käytetään testeissä (joiden kirjoittaminen on siten helpompaa)
+
+
+Kotitehtävä:
+
+http://railsforzombies.org/
+
+tee level 1 tehtävät active recordista.
+
+
