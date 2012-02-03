@@ -143,8 +143,9 @@ rails c
 avaa rails-konsolin
 
 rails generate model Book title:string authors:string description:text
-tuo luo luokan Book (tai modelin) ja samalla db/migrate-kansioon tietokantataulun luomiskomennot.
+tuo luo luokan Book (tai modelin) ja samalla db/migrate-kansioon tietokantataulun luomiskomennot, 
+sekä myös testaustiedoston!
 
-Tämä on nimeltään Active records association.
+Tämä on nimeltään Active records association. b = Book.new luo uuden olion, joka tallennetaan tietokantaan komennolla b.save
 
 
