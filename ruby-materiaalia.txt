@@ -117,3 +117,26 @@ end
 
 tulostaa tiedoston jokaisen rivin. Tiedostoa ei tarvitse erikseen sulkea.
 
+-------------------
+3. viikko
+
+Testaus:
+test/unit-hakemistoon luodaan 
+
+
+rake db:migrate
+(rake db:rollback palauttaa takaisin, kumoaa edellisen komennon)
+
+rake -T db kertoo tietokantaan liittyvät toiminnot
+rake db:drop deletoi tietokannan
+
+Migratella rails luo automaattisesti (ohjeiden mukaan) tietokantataulut ja osaa myös poistaa ne.
+Rails osaa tällä tavalla käyttää mitä tahansa tietokantaa (ohjelmakoodia muuttamatta).
+
+rails c 
+avaa rails-konsolin
+
+rails generate model Book title:string authors:string description:text
+tuo luo luokan Book (tai modelin) ja samalla db/migrate-kansioon tietokantataulun luomiskomennot.
+
+
