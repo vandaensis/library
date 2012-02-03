@@ -148,4 +148,28 @@ sekä myös testaustiedoston!
 
 Tämä on nimeltään Active records association. b = Book.new luo uuden olion, joka tallennetaan tietokantaan komennolla b.save
 
+test/fixtures sisältää tiedoston books.yml (monikko!)
+
+se sisältää Book-modelin testitapauksissa käytettäviä tietokannan rivejä (=olioita). Esim:
+steppenwolf:
+  title: Steppenwolf
+  authors: Hermann Hesse
+  description: A great book
+
+näitä voi käyttää testitapauksissa (book_test.rb) näin:
+	test "a book without a title should not be valid" do
+		@book = books(:steppenwolf)
+		@book.title = ''
+		assert @book.invalid?
+	end
+
+tuossa muutettiin steppenwolfin otsikko tyhjäksi, jolloin testi ei saisi onnistua hyväksytysti. book.rb sisältää:
+class Book < ActiveRecord::Base
+  
+  validates :title, presence: true, uniqueness: true
+  validates	:authors, presence: true	
+
+end
+
+eli tehdään halutut tarkistukset automaattisesti.
 
