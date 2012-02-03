@@ -176,3 +176,37 @@ eli tehdään halutut tarkistukset automaattisesti.
 ruby-konsoli käyttää developer-tietokantaa, rake test:units käyttää eri tietokantaa (testitietokanta).
 
 
+Lisätään ISBN active records -tietoihin:
+rails generate migration AddIsbnToBooks isbn:string
+
+Rails luo uuden tiedoston db/migrate-hakemistoon (nimi päättyy aikaleiman jälkeen: _add_isbn_to_books.rb)
+
+class AddIsbnToBooks < ActiveRecord::Migration
+  def change
+    add_column :books, :isbn, :string
+  end
+end
+
+tuo change tarkoittaa, että ruby tai rails osaa tehdä myös toisinpäin, eli poistaa sarakkeen.
+
+
+
+Lisätään tarkistuksia, käyttäen omaa validaattoria isbn:n tarkistamiseen:
+
+class Book < ActiveRecord::Base
+  
+  validates :title, presence: true, uniqueness: true # ja esim vielä vaikka  :length: { in: 3..200 }
+  # voisi olla myös:  validates :title, :authors, presence: ...
+
+	validates	:authors, presence: true	
+
+	validates_with IsbnValidator
+
+end
+
+Myös validaattori kirjoitettiin uudelleen... ja sen vuoksi myös testitapaukset piti muokata.
+
+test "a string with letters other than x is not valid" do
+    assert !IsbnValidator.new.valid?("951-98548-9-p")
+  end
+
