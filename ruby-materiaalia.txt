@@ -173,3 +173,6 @@ end
 
 eli tehdään halutut tarkistukset automaattisesti.
 
+ruby-konsoli käyttää developer-tietokantaa, rake test:units käyttää eri tietokantaa (testitietokanta).
+
+
