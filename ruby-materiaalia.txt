@@ -226,4 +226,134 @@ http://railsforzombies.org/
 
 tee level 1 tehtävät active recordista.
 
+-------------------------------------------
+4. oppitunti
+
+kun githubista ladattu .zip-tiedosto ja purettu se library-kansioon, aja siellä:
+
+bundle install
+rake db:migrate
+
+
+REST:
+- /books on resurssi (http://libraryapplication/books)
+
+verbi + resurssi
+
+create --> POST
+readn many ---> GET /book
+read one ----> GET /book/3
+update ---> PUT /books/3
+
+log in --> POST /session
+log out ---> DELETE /session
+
+RESTful on resurssien representation
+
+
+Ladattiin campfiren keskustelusta lisää kirjoja sisältävä books.yaml -tiedosto
+päivitettiin sisältö sinne kopioimalla ja tallennnettiin.
+
+aja:
+rake db:fixtures:load
+
+Lisättiin routes.db -tiedostoon (config-kansiossa) rivi:
+
+resources :books
+
+ja ajetaan k
+omento
+
+rake routes
+
+joka listaa kaikki resurssit, jotka luotiin automaattisesti book:ille (CRUD).
+Se näyttää myös, mitä toimintoon tarvitaan (ja tehdään ne seuraavaksi).
+
+
+ajetaan:
+
+rake generate controller books
+
+se luo controlleritiedostoja, helperin, testejä, css:ää ym.
+
+test/functional -kansioon luotiin books_controller_test.rb
+
+se testaa kaiken view:hun liittyvän, periyttää sen ActionController::TestCase:sta
+
+assert_response :success #tarkoittaa, että http-pyyntö onnistui (http-koodi 200 tms)
+
+assert assigns(:books) # varmistaa, että on olemassa instance variable :books
+
+testataan komennolla: (vain tämä toiminnallinen osa)
+
+rake test:functionals
+
+(virhe tulee, koska ei ole vielä toteutusta...)
+
+tehdään books_controller.rb tiedostoon:
+
+def index
+	@books = Book.all
+end
+
+ja lisätään tiedosto index.html.erb -tiedosto views/books -kansioon
+
+
+rails s
+tai: rails server käynnistää serverin
+
+Lisätään index.html.erb-tiedostoon kirjojen nimet ja tekijät tulostava koodi html:n kera:
+
+<h1>Books</h1>
+
+<ul>
+  <% @books.each do |book| %>
+    <li>
+      <strong><%= book.title %></strong>
+      by <%= book.authors %>
+    </li>
+  <% end %>
+</ul>
+
+
+Toimii kuten PHP tai JSP...
+
+kirjoitetaan komento
+
+rake routes
+
+tulostuu:
+
+books GET    /books(.:format)          {:action=>"index", :controller=>"books"}
+          POST   /books(.:format)          {:action=>"create", :controller=>"books"}
+ new_book GET    /books/new(.:format)      {:action=>"new", :controller=>"books"}
+edit_book GET    /books/:id/edit(.:format) {:action=>"edit", :controller=>"books"}
+     book GET    /books/:id(.:format)      {:action=>"show", :controller=>"books"}
+          PUT    /books/:id(.:format)      {:action=>"update", :controller=>"books"}
+          DELETE /books/:id(.:format)      {:action=>"destroy", :controller=>"books"}
+     root        /                         {:controller=>"site", :action=>"index"}
+
+joka neuvoo, mitä resursseja ja verbejä voi käyttää, ja mitä funktioita ne tarvitsevat.
+POST tarvitsee metodin create, jonka pitää olla controllerissa books.
+
+link_to lisää linkin elementtiin
+book_path(book) hakee yksittäisen kirjan polun
+
+ohjeita:
+api.rubyonrails.org
+
+
+form_for
+
+luo automaattisesti tyhjän lomakkeen, jos saa tyhjän tiedon, tai täytetyn jos olio olemassa jo.
+
+--
+
+dynamic form -gem githubista --> saat lomakkeen kenttien perään virheilmoitukset
+
+
+
+
+
+
 
